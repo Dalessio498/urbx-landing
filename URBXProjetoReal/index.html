@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBX</title>
+    <link href='https://googleapis.com' rel='stylesheet'>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-color: #141414;
+            font-family: 'Open Sans', sans-serif;
+            color: #fff;
+        }
+
+        header img {
+            width: 150px;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 30vh;
+            box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.3);
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        header nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 750;
+            transition: 0.2s ease-in-out;
+            font-size: 14px;
+        }
+
+        header nav a:hover {
+            transform-origin: bottom;
+            color: #8c1df4;
+            transform: scaleY(1.1);
+        }
+
+        .botao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .botao button {
+            height: 20%;
+            padding: 5px 20px;
+            background-color: #8c1df4;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        section {
+            height: 700px;
+        }
+
+        footer {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            box-shadow: 1px 1px 20px rgba(140, 29, 244, 1.0);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        footer div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        footer div button {
+            height: 20%;
+            padding: 10px 20px;
+            background-color: #8c1df4;
+            border: none;
+            border-radius: 20px;
+            width: 50%;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .overlay {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+        }
+
+        .overlay.ativo {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            height: 50%;
+            width: 80%;
+            box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            background-color: #141414;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 10px 10px;
+            padding-top: 40px;
+            opacity: 0.4;
+            transition: 0.3s ease-in-out;
+        }
+
+        .overlay.ativo .modal {
+            opacity: 1;
+        }
+
+        .paiFormaPagamento {
+            height: 80%;
+            width: 85%;
+            padding: 20px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 33% 33% 33%;
+            grid-template-rows: 2;
+            column-gap: 14px;
+        }
+
+        .formaPagamento {
+            display: flex;
+            width: 100%;
+            background-color: #fff;
+            height: 34%;
+            align-self: center;
+            border-radius: 30px;
+        }
+
+        button:hover {
+            scale: 1.05;
+            font-size: 14px;
+        }
+
+        .sobre {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            padding: 80px;
+            background: linear-gradient(90deg, #1a0033, #3b0070);
+        }
+
+        .lado-esquerdo h2 {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 40px;
+            color: white;
+            letter-spacing: 5px;
+        }
+
+        .sobre-conteudo {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .sobre-imagem img {
+            width: 250px;
+            border-radius: 20px;
+        }
+
+        .endereco {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .endereco p {
+            font-size: 14px;
+        }
+
+        .sobre-texto {
+            max-width: 900px;
+        }
+
+        .sobre-texto h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .sobre-texto p {
+            font-size: 21px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="botao">
+
+            <img src="Logo_URBX.png" alt="">
+            <button>Contato</button>
+        </div>
+        <nav>
+            <a href="">CATEGORIAS</a>
+            <a href="">MARCAS</a>
+            <a href="">PRODUTOS</a>
+            <a href="#sobre">SOBRE</a>
+        </nav>
+    </header>
+
+    <section id="sobre" class="sobre">
+
+        <div class="lado-esquerdo">
+            <h2>SOBRE<br>ABOUT US</h2>
+        </div>
+
+        <div class="sobre-conteudo">
+
+            <div class="sobre-imagem">
+                <img src="lugar.jpg" alt="Loja URBX">
+
+                <div class="endereco">
+                    <h3>📍</h3>
+                    <p>
+                        Rua das Urbanidades, 427<br>
+                        Bairro Vila Street<br>
+                        São Paulo - SP<br>
+                        CEP: 04567-900
+                    </p>
+                </div>
+            </div>
+
+            <div class="sobre-texto">
+                <h3>História da URBX</h3>
+
+                <p>
+                    A URBX nasceu da paixão pela cultura urbana e pela vontade
+                    de transformar estilo em identidade. Inspirada pelas ruas,
+                    pela música e pela arte, a URBX surgiu com um propósito claro:
+                    criar roupas que representem atitude, autenticidade e personalidade.
+                </p>
+
+                <p>
+                    O roxo representa criatividade e ousadia, enquanto o branco
+                    simboliza simplicidade e equilíbrio. Juntas, essas cores
+                    traduzem perfeitamente o espírito da URBX.
+                </p>
+
+                <p>
+                    Hoje, a URBX continua crescendo com a missão de levar o
+                    streetwear para mais pessoas, sempre mantendo suas raízes
+                    na cultura urbana.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div>
+            &copy; direitos reservados
+        </div>
+
+        <div>
+            <h3>Formas de Pagamento</h3>
+            <button id="abrirModalPagamento">clique aqui</button>
+        </div>
+
+
+
+        <div>
+            <h2>SIGA A</h2>
+            <img src="" alt=""> <!--Logo URBX-->
+            <hr>
+            <img src="" alt=""> <!--Instagram-->
+            <img src="" alt=""> <!--Twitter (X)-->
+            <img src="" alt=""> <!--Facebook-->
+            <img src="" alt=""> <!--Tiktok-->
+        </div>
+    </footer>
+    <div class="overlay">
+        <div class="modal">
+            <h2>FORMAS DE PAGAMENTO</h2>
+            <div class="paiFormaPagamento">
+                <div class="formaPagamento">
+
+                </div>
+
+                <div class="formaPagamento">
+
+                </div>
+
+                <div class="formaPagamento">
+
+                </div>
+                <div class="formaPagamento">
+
+                </div>
+                <div class="formaPagamento">
+
+                </div>
+                <div class="formaPagamento">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const abrirModalPagamento = document.querySelector("#abrirModalPagamento")
+        const overlay = document.querySelector(".overlay")
+        const modal = document.querySelector(".modal")
+        abrirModalPagamento.addEventListener("click", function () {
+            overlay.classList.add("ativo")
+        })
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                overlay.classList.remove("ativo")
+            }
+        })
+
+        overlay.addEventListener("click", (event) => {
+            if (event.target === overlay) {
+                overlay.classList.remove("ativo")
+            }
+        })
+    </script>
+</body>
+
+</html>
