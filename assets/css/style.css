@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.categorias {
+    width: 100%;
+    height: fit-content;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background-image: linear-gradient(to right, rgb(248, 248, 248), rgb(232, 178, 236));
+}
+
+.divisor-diagonal {
+    position: relativeq;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #8c1df4;
+    clip-path: polygon(0% 0%, 100% 100%, 100% 0%, 0% 0%);
+    z-index: 10;
+}
+
+.divisor-diagonal2 {
+    position: relativeq;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #8c1df4;
+    clip-path: polygon(0% 0%, 100% 100%, 0% 100%, 0% 0%);
+    z-index: 10;
+}
+
+.categorias-titulo {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    /* transform: rotate(90deg); */
+}
+
+.port-titulo,
+.eng-titulo {
+    display: flex;
+    align-items: center;
+}
+
+.port-titulo h1 {
+    font-weight: 500;
+    color: #28004d;
+}
+
+.eng-titulo h1 {
+    color: #8c1df4;
+    font-weight: 300;
+}
+
+.port-titulo i,
+.eng-titulo i {
+    color: #8c1df4;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0.8rem;
+}
+
+.categories-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.categories-box {
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid #8c1df4;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 3rem 0;
+}
+
+.categories-imgs {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-img {
+    position: relative;
+    max-height: 453px;
+    max-width: 289px;
+    width: fit-content;
+}
+
+
+.categories-img h3 {
+    position: absolute;
+    z-index: 3;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.432);
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+    font-size: 1.4rem;
+    display: none;
+}
